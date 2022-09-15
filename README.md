@@ -24,3 +24,9 @@ Numbering the duplicates in the rownames
 time_wt2KO_mouse_countDF_log$Metabolite <- ave(as.character(time_wt2KO_mouse_countDF_log$Metabolite), 
   time_wt2KO_mouse_countDF_log$Metabolite, FUN=function(x) if (length(x)>1) paste0(x[1], '(', seq_along(x), ')') else x[1])
 ```
+
+Finding average for every 3 columns in dataframe
+
+```
+sapply(seq(2, ncol(dff2), 3), function(j) rowMeans(dff2[, j+(-1:1)]))
+```
